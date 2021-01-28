@@ -28,4 +28,12 @@ public class StudentService {
 		repository.save(student);
 	}
 
+	public void deleteStudent(Long studentId) {
+		boolean exists = repository.existsById(studentId);
+		if (!exists) {
+			throw new IllegalStateException("student with id " + studentId + " does not exists");
+		}
+		repository.deleteById(studentId);
+	}
+
 }
